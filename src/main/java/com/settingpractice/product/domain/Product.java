@@ -1,31 +1,36 @@
 package com.settingpractice.product.domain;
 
+import java.math.BigDecimal;
+import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.math.BigDecimal;
-import java.util.UUID;
-
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Product {
-
     @Id
-    String productId;
+    @Column(length = 20)
+    private String productId;
 
-    BigDecimal purchasePricePerUnit;
+    /**
+     *  is good.
+     */
+    private BigDecimal purchasePricePerUnit;
 
-
-    public Product(BigDecimal purchasePricePerUnit) {
+    /**
+     *  is good.
+     */
+    public Product(BigDecimal purchasePricePerUnit){
         this.productId = UUID.randomUUID().toString();
         this.purchasePricePerUnit = purchasePricePerUnit;
     }
-
 }
